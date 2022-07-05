@@ -94,40 +94,40 @@ function selectAnswer(e) {
 }
 const questions = [
     {
-       question: 'An array has to be stored in',
+       question: 'A string in JavaScript must be surrounded by',
        answers: [
-           { text: '""', correct: false },
-           { text: '[]', correct: true },
+           { text: '[]', correct: false },
+           { text: '""', correct: true },
            { text: '{}', correct: false },
            { text: '()', correct: false }
        ]
     },
     {
-       question: 'To declare the end of a statement use',
+       question: 'Functions are what type of unit of behavior',
        answer: [
-           { text: ';', correct: true },
-           { text: ':', correct: false },
-           { text: '.', correct: false },
-           { text: '/', correct: false }
+           { text: 'independent', correct: true },
+           { text: 'dependent', correct: false },
+           { text: 'both', correct: false },
+           { text: 'neither', correct: false }
        ]
     },
     {
-       question: 'What does a string refer to?',
+       question: 'Objects are a collection of',
        answer: [
            { text: 'numbers', correct: false },
-           { text: 'text', correct: true },
+           { text: 'properties', correct: true },
            { text: 'thread', correct: false },
            { text: 'none of the above', correct: false }
        ]
     },
     {
 
-       question: 'What git command creates a new branch', 
+       question: 'JavaScript is a ', 
        answer: [
-           { text: 'git checkout -b', correct: true },
-           { text: 'git commit -b', correct: false },
-           { text: 'git checkout -m', correct: false },
-           { text: 'git status', correct: false }
+           { text: 'single-threaded language', correct: true },
+           { text: 'double-threaded language', correct: false },
+           { text: 'triple-treaded language', correct: false },
+           { text: 'all of the above', correct: false }
        ]
     },
 ]
