@@ -1,6 +1,9 @@
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('question-container');
+let shuffleQuestions, currentQuestionIndex;
+const questionElement = document.getElementById("question");
+const answerButtonElement = document.getElementById("answer-buttons");
 const timeElement = document.getElementById('current-time');
 const maxTime = 75;
 var timer;
@@ -14,6 +17,8 @@ startButton.addEventListener('click', startGame);
 function startGame() {
     console.log('Started');
     startButton.classList.add('hide');
+    shuffledQuestions = questions.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0;
     questionContainerElement.classList.remove('hide');
     setNextQuestion();
     startTimer();
@@ -54,11 +59,9 @@ function resetScore() {
     //todo
 }
 
-
-funs
-
 function setNextQuestion() {
-    //resetState()
+    //resetState();
+    showQuestion(questions[currentQuestionIndex]);
 
 }
 
@@ -68,10 +71,11 @@ function setNextQuestion() {
 //save
 
 function showQuestion(question) {
-    questionContainerElement.innerText = question.question
-    question.answer.forEach(answer => {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
         const button = document.createElement('button')
-        button.innerText = answer.textbutton.classList.add('btn')
+        button.innerText = answer.text
+        button.classList.add("btn")
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
@@ -81,15 +85,24 @@ function showQuestion(question) {
     })
 }
 
-function resetState() {
-    nextButton.classList.add('hide')
-    while (answerButtonElement.firstChild) {
-        answerButtonElement.removeChild
-        (answerButtonElement.firstChild)
-    }
-}
+// function resetState() {
+//     nextButton.classList.add('hide')
+//     while (answerButtonElement.firstChild) {
+//         answerButtonElement.removeChild
+//         (answerButtonElement.firstChild)
+//     }
+// }
 
 function selectAnswer(e) {
+    var correctAnswer = e.target.dataset.correct
+    if (correctAnswer) {
+        currentQuestionIndex++
+        setNextQuestion()
+    } else {
+        currentTime -= 10
+        currentQuestionIndex++
+        setNextQuestion()
+    }
 
 }
 const questions = [
@@ -104,7 +117,7 @@ const questions = [
     },
     {
        question: 'Functions are what type of unit of behavior',
-       answer: [
+       answers: [
            { text: 'independent', correct: true },
            { text: 'dependent', correct: false },
            { text: 'both', correct: false },
@@ -113,7 +126,7 @@ const questions = [
     },
     {
        question: 'Objects are a collection of',
-       answer: [
+       answers: [
            { text: 'numbers', correct: false },
            { text: 'properties', correct: true },
            { text: 'thread', correct: false },
@@ -123,7 +136,7 @@ const questions = [
     {
 
        question: 'JavaScript is a ', 
-       answer: [
+       answers: [
            { text: 'single-threaded language', correct: true },
            { text: 'double-threaded language', correct: false },
            { text: 'triple-treaded language', correct: false },
