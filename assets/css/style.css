@@ -39,6 +39,9 @@ body {
   color: black;
   outline: none;
 }
+.hide {
+  display: none;
+}
 
 .btn:hover {
   border-color: black;

@@ -73,13 +73,14 @@ function setNextQuestion() {
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
-        const button = document.createElement('button')
+        const button = document.createElement('question')
         button.innerText = answer.text
         button.classList.add("btn")
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
-    
+        var questionList = document.getElementsByTagName("question")
+        console.log(questionList)
         button.addEventListener('click', selectAnswer)
         answerButtonElement.appendChild(button)
     })
@@ -97,13 +98,18 @@ function selectAnswer(e) {
     var correctAnswer = e.target.dataset.correct
     if (correctAnswer) {
         currentQuestionIndex++
+        var questionList = document.getElementsByTagName("question")
+console.log(questionList)
         setNextQuestion()
     } else {
         currentTime -= 10
         currentQuestionIndex++
+        var questionList = document.getElementsByTagName("question")
+console.log(questionList)
         setNextQuestion()
     }
-
+var questionList = document.getElementsByTagName("question")
+console.log(questionList)
 }
 const questions = [
     {
