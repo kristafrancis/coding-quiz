@@ -79,37 +79,31 @@ function showQuestion(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
-        var questionList = document.getElementsByTagName("question")
-        console.log(questionList)
+       
         button.addEventListener('click', selectAnswer)
         answerButtonElement.appendChild(button)
     })
 }
 
-// function resetState() {
-//     nextButton.classList.add('hide')
-//     while (answerButtonElement.firstChild) {
-//         answerButtonElement.removeChild
-//         (answerButtonElement.firstChild)
-//     }
-// }
+ function resetState() {
+    nextButton.classList.add('hide')
+    while (answerButtonElement.firstChild) {
+        answerButtonElement.removeChild
+        (answerButtonElement.firstChild)
+    }
+}
 
 function selectAnswer(e) {
     var correctAnswer = e.target.dataset.correct
     if (correctAnswer) {
-        currentQuestionIndex++
-        var questionList = document.getElementsByTagName("question")
-console.log(questionList)
-        setNextQuestion()
+       
     } else {
         currentTime -= 10
-        currentQuestionIndex++
-        var questionList = document.getElementsByTagName("question")
-console.log(questionList)
-        setNextQuestion()
+        
     }
-var questionList = document.getElementsByTagName("question")
-console.log(questionList)
+    currentQuestionIndex++
+     resetState()   
+    setNextQuestion()
 }
 const questions = [
     {
